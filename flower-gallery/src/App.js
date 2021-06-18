@@ -1,13 +1,33 @@
-import Header from './components/header/Header'
 import './App.css';
+import Header from './components/header/Header';
 
 
 function App() {
+  const users = [
+    {
+      "first_name": "Mohammed",
+      "last_name": "Alnajdi",
+      "age": 25
+    },
+    {
+      "first_name": "Mohammed",
+      "last_name": "Alnajdi",
+      "age": 25
+    },
+  ];
+
   return (
     <div className="App">
-      <Header firstName="1" lastName="3" />
-      <Header firstName="2" lastName="2" />
-      <Header firstName="3" lastName="1" />
+    {/* Loop Over Users List */}
+    {users.length ? users.map(user => {
+      return (
+        <Header 
+          first_name={user.first_name}
+          last_name={user.last_name}
+          age={user.age}
+        />
+      );
+    }): <p>No Users</p>}
     </div>
   );
 }

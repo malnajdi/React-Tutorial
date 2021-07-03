@@ -11,10 +11,21 @@ function App() {
     setFirstName("Abdullah");
   }
 
+  function handleNameRemove() {
+    setFirstName("");
+  }
+
+  function handleNameReset() {
+    setFirstName("Mohammed");
+  }
+
   return (
     <div>
       <p>{firstName}</p>
+      <button onClick={handleNameReset}>Reset Name</button>
       <button onClick={handleNameChange}>Change Name</button>
+      <button onClick={handleNameRemove}>Remove Name</button>
+      { firstName && <Header firstName={firstName} age={25}/> }
     </div>
   );
 }

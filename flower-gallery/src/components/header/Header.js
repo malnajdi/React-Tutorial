@@ -1,43 +1,20 @@
 import React, { useEffect } from 'react'
 import './Header.css';
 
-// [1] : Function Based Component
-function Header (props) {
-
-    useEffect(() => {
-        console.log(`First Render`);
-    }, []);
-
+const Header = () => {
     return (
-        <h2>
-            Welcome {props.firstName} <br/>
-                    {props.lastName} Your Age is  
-                    <strong> {props.age}</strong>
-        </h2>
+        <header id="header">
+            <a href="/" class="logo"><strong>Flower Gallary</strong></a>
+            <ul class="icons">
+                <li><a href="" class="icon solid fa-sign-out-alt"><span class="label">Logout</span></a></li>
+                <li><a href="" class="icon solid fa-sign-in-alt"><span class="label">Login</span></a></li>
+                <li>
+                <button>ar</button>
+                <button>en</button>
+                </li>
+            </ul>
+        </header>
     );
 }
-
-// [2] : Class Based Component
-// class Header extends React.Component {
-
-//     componentDidMount(){
-//         console.log('Did Mount');
-//     }
-
-//     componentDidUpdate(){
-//         console.log('Did Update');
-//     }
-
-//     componentWillUnmount(){
-//         console.log('Will Unmount');
-//     }
-
-
-//     render() {
-//         return (
-//             <h2>Class Based Header</h2>
-//         );
-//     }
-// }
 
 export default Header;

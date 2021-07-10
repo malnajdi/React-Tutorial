@@ -1,87 +1,77 @@
 import React, {useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Header from './components/header/Header.js';
+import HomePage from './pages/home/HomePage.js';
+import DetailPage from './pages/detail/DetailPage.js';
+import LoginPage from './pages/login/LoginPage.js';
 import './App.css';
-import Header from './components/header/Header';
 
 
-// Function Based State
-function App() {
-  const [firstName, setFirstName] = useState("Mohammed");
-
-  function handleNameChange() {
-    setFirstName("Abdullah");
-  }
-
-  function handleNameRemove() {
-    setFirstName("");
-  }
-
-  function handleNameReset() {
-    setFirstName("Mohammed");
-  }
+const App = () => {
+  const [flowers, setFlowers] = useState([
+    {
+      'id': 1,
+      'title': '1',
+      'title_ar': '1',
+      'description': '1',
+      'description_ar': '1',
+    },
+    {
+      'id': 2,
+      'title': '2',
+      'title_ar': '2',
+      'description': '2',
+      'description_ar': '2',
+    },
+    {
+      'id': 3,
+      'title': '3',
+      'title_ar': '3',
+      'description': '3',
+      'description_ar': '3',
+    }
+]);
 
   return (
-    <div>
-      <p>{firstName}</p>
-      <button onClick={handleNameReset}>Reset Name</button>
-      <button onClick={handleNameChange}>Change Name</button>
-      <button onClick={handleNameRemove}>Remove Name</button>
-      { firstName && <Header firstName={firstName} age={25}/> }
-    </div>
+    <body class="is-preload">
+      <div id="wrapper">
+        <div id="main">
+          <div class="inner">
+            <Header />
+            <Router>
+              <Switch>    
+                
+              <Route exact path="/">
+                  <HomePage flowers={flowers}/>
+                </Route>
+                
+                <Route path="/flower/:id">
+                  <DetailPage />
+                </Route>
+                
+                <Route path="/login/">
+                  <LoginPage />
+                </Route>
+               
+                
+
+              </Switch>
+            </Router>
+          </div>
+	      </div>
+      </div>
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/browser.min.js' %}"></script>
+      <script src="{% static 'js/breakpoints.min.js' %}"></script>
+      <script src="{% static 'js/util.js' %}"></script>
+      <script src="{% static 'js/main.js' %}"></script>
+    </body>
   );
 }
 
-// Class Based States
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       first_name: "Mohammed",
-//     }
-//     this.handleNameChange = this.handleNameChange.bind(this);
-//   }
-
-//   handleNameChange() {
-//     this.setState({first_name: 'Abdullah'});
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <p>{this.state.first_name}</p>
-//         <button onClick={this.handleNameChange}>Change Name</button>
-//       </div>
-//     );
-//   }
-// }
-
-// function App() {
-//   const users = [
-//     {
-//       "first_name": "Mohammed",
-//       "last_name": "Alnajdi",
-//       "age": 25
-//     },
-//     {
-//       "first_name": "Mohammed",
-//       "last_name": "Alnajdi",
-//       "age": 25
-//     },
-//   ];
-
-//   return (
-//     <div className="App">
-//     {/* Loop Over Users List */}
-//     {users.length ? users.map(user => {
-//       return (
-//         <Header 
-//           first_name={user.first_name}
-//           last_name={user.last_name}
-//           age={user.age}
-//         />
-//       );
-//     }): <p>No Users</p>}
-//     </div>
-//   );
-// }
 
 export default App;

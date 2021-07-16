@@ -15,24 +15,24 @@ const App = () => {
   const [flowers, setFlowers] = useState([
     {
       'id': 1,
-      'title': '1',
-      'title_ar': '1',
-      'description': '1',
-      'description_ar': '1',
+      'title': 'Red Flower',
+      'title_ar': 'وردة حمراء',
+      'description': "represent desire, strength, and passionate love. With beauty, courage and heat as its symbolism, it's no surprise that a bouquet filled with rich, red blooms knows no restraint.",
+      'description_ar': 'تمثل الرغبة والقوة والحب العاطفي. مع الجمال والشجاعة والحرارة كرمز لها ، فليس من المستغرب أن باقة مليئة بالأزهار الحمراء الغنية لا تعرف أي قيود. ',
     },
     {
       'id': 2,
-      'title': '2',
-      'title_ar': '2',
-      'description': '2',
-      'description_ar': '2',
+      'title': 'Yellow Flower',
+      'title_ar': 'وردة صفراء',
+      'description': 'burst with happiness. They symbolize the bonds of friendship, the taste of success and pride. Joy is also one of the meanings of this flower, as that is one of the feelings the color is said to evoke.',
+      'description_ar': 'تنفجر من السعادة. إنها ترمز إلى روابط الصداقة وطعم النجاح والفخر. الفرح هو أيضًا أحد معاني هذه الزهرة ، حيث أن هذا أحد المشاعر التي يُقال إن اللون يستحضرها. ',
     },
     {
       'id': 3,
-      'title': '3',
-      'title_ar': '3',
-      'description': '3',
-      'description_ar': '3',
+      'title': 'Blue flower',
+      'title_ar': 'وردة زرقاء',
+      'description': "stands for desire, love, and inspiration. It is a flower that represents the metaphysical striving for the impossible and infinite. Color blue in the flower that is for ambitious people who would like to reach for the unreachable and wouldn't leave any stone unturned to accomplish their goals.",
+      'description_ar': 'يرمز إلى الرغبة والحب والإلهام. إنها زهرة تمثل الكفاح الميتافيزيقي من أجل المستحيل واللانهائي. لون الزهرة باللون الأزرق للأشخاص الطموحين الذين يرغبون في الوصول إلى من لا يمكن الوصول إليهم ولن يتركوا أي حجر دون أن يقلبوه لتحقيق أهدافهم. ',
     }
 ]);
 
@@ -43,7 +43,7 @@ const App = () => {
           <div class="inner">
             <Header />
             <Router>
-              <Switch>    
+              <Switch>
                 
               <Route exact path="/">
                   <HomePage flowers={flowers}/>
@@ -56,8 +56,6 @@ const App = () => {
                 <Route path="/login/">
                   <LoginPage />
                 </Route>
-               
-                
 
               </Switch>
             </Router>

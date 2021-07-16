@@ -1,18 +1,30 @@
+import { useTranslation } from "react-i18next";
+
 const HomePage = (props) => {
+    const [ t, i18n ] = useTranslation();
+    const flowers = props.flowers.map(flower => {
+        if(i18n.language === 'ar') {
+            return ({
+                'id': flower.id,
+                'title': flower.title_ar,
+                'description': flower.description_ar,
+            });
+        }
+        return flower;
+    });
+
     return (
         <div>
             <section>
                 <div class="posts">
-                    {props.flowers.map(flower => 
+                    {flowers.map(flower => 
                         <article>
                             <a href="#" class="image"><img src="" alt="" /></a>
-                            <h3>{flower.title_ar}</h3>
-                            <p>{flower.description_ar}</p>
                             <h3>{flower.title}</h3>
                             <p>{flower.description}</p>
                             <ul class="actions">
                                 <li><a href="" class="button">
-                                    More
+                                    {t("more")}
                                 </a></li>
                             </ul>
                         </article>

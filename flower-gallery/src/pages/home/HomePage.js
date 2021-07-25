@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const HomePage = (props) => {
     const [ t, i18n ] = useTranslation();
@@ -20,13 +21,13 @@ const HomePage = (props) => {
                 <div className="posts">
                     {flowers.map(flower => 
                         <article>
-                            <a href="#" class="image"><img src="" alt="" /></a>
+                            <Link to={`/flower/${flower.id}`} class="image"><img src={`http://127.0.0.1:8000${flower.image}`} alt="" /></Link>
                             <h3>{flower.title}</h3>
                             <p>{flower.description}</p>
                             <ul class="actions">
-                                <li><a href="" class="button">
+                                <li><Link to={`/flower/${flower.id}`} class="button">
                                     {t("more")}
-                                </a></li>
+                                </Link></li>
                             </ul>
                         </article>
                     )}

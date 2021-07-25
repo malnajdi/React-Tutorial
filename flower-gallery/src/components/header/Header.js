@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
+import { Link } from "react-router-dom"
 
 import './Header.css';
 
@@ -8,7 +9,7 @@ const Header = () => {
 
     return (
         <header id="header">
-            <a href="/" class="logo"><strong>{t('title')}</strong></a>
+            <Link to="/" class="logo"><strong>{t('title')}</strong></Link>
             <ul class="icons">
                 <li><a href="" className="icon solid fa-sign-out-alt"><span className="label">Logout</span></a></li>
                 <li><a href="" className="icon solid fa-sign-in-alt"><span className="label">Login</span></a></li>

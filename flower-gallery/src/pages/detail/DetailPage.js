@@ -1,7 +1,23 @@
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
+
 const DetailPage = (props) => {
+    const [ t, i18n ] = useTranslation();
+    const { id } = useParams();
+    const [ flower, setFlower ] = useState({})
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:8000/api/flowers/${id}`)
+        .then(res => res.json())
+        .then(result => {
+            setFlower(result);
+        });
+    }, []);
+
     return (
         <section>
-            <header class="main">
+            <header className="main">
                 <div>
                     Liked: By [
                 username , 
@@ -12,18 +28,27 @@ const DetailPage = (props) => {
                 username , 
                     ]
                 </div>
-            
-                    <h1>title_ar </h1>
-                    <h1> title </h1>            
+                    <h1>
+                        {
+                            i18n.language === 'ar' ?
+                            flower && flower.title_ar :
+                            flower && flower.title
+                        }  
+                    </h1>          
                 <form method="POST" action="">
-                        <button type="submit" value="like" name='like'><i class="far fa-heart"></i></button>
-                        <button type="submit" value="dislike" name='dislike'><i class="fas fa-heart-broken"></i></button>										
+                        <button type="submit" value="like" name='like'><i className="far fa-heart"></i></button>
+                        <button type="submit" value="dislike" name='dislike'><i className="fas fa-heart-broken"></i></button>										
                 </form>            
             </header> 
 
-            <span class="image main"><img src="" alt="" /></span>
-            <p>description_ar</p>
-            <p>description</p>
+            <span className="image main"><img src={`http://127.0.0.1:8000${flower && flower.image}`} alt="" /></span>
+            <p> 
+                {
+                    i18n.language === 'ar' ?
+                    flower && flower.description_ar :
+                    flower && flower.description
+                }  
+            </p>
         </section>
     )
 }

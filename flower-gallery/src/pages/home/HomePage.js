@@ -24,9 +24,9 @@ const HomePage = (props) => {
                             <h3>{flower.title}</h3>
                             <p>{flower.description}</p>
                             <ul class="actions">
-                                <li>
-                                    <Link to={`/flower/${flower.id}`} className="button">{t("more")}</Link>
-                                </li>
+                                <li><a href="" class="button">
+                                    {t("more")}
+                                </a></li>
                             </ul>
                         </article>
                     )}

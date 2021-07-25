@@ -8,6 +8,7 @@ const HomePage = (props) => {
                 'id': flower.id,
                 'title': flower.title_ar,
                 'description': flower.description_ar,
+                'image': flower.image
             });
         }
         return flower;
@@ -16,26 +17,26 @@ const HomePage = (props) => {
     return (
         <div>
             <section>
-                <div class="posts">
+                <div className="posts">
                     {flowers.map(flower => 
                         <article>
                             <a href="#" class="image"><img src="" alt="" /></a>
                             <h3>{flower.title}</h3>
                             <p>{flower.description}</p>
                             <ul class="actions">
-                                <li><a href="" class="button">
-                                    {t("more")}
-                                </a></li>
+                                <li>
+                                    <Link to={`/flower/${flower.id}`} className="button">{t("more")}</Link>
+                                </li>
                             </ul>
                         </article>
                     )}
                 </div>
             </section>
-            <div class="pagination">
-                <span class="step-links">
+            <div className="pagination">
+                <span className="step-links">
                     <a href="?page=1">&laquo; first</a>
                     <a href="?page=">previous</a>
-                    <span class="current">
+                    <span className="current">
                         Page number of num_pages.
                     </span>
                     <a href="?page=">next</a>

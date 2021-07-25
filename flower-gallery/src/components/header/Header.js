@@ -10,8 +10,8 @@ const Header = () => {
         <header id="header">
             <a href="/" class="logo"><strong>{t('title')}</strong></a>
             <ul class="icons">
-                <li><a href="" class="icon solid fa-sign-out-alt"><span class="label">Logout</span></a></li>
-                <li><a href="" class="icon solid fa-sign-in-alt"><span class="label">Login</span></a></li>
+                <li><a href="" className="icon solid fa-sign-out-alt"><span className="label">Logout</span></a></li>
+                <li><a href="" className="icon solid fa-sign-in-alt"><span className="label">Login</span></a></li>
                 <li>
                 { i18n.language === 'en' && <button onClick={() => {
                     i18n.changeLanguage('ar');

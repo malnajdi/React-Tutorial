@@ -13,35 +13,55 @@ import './App.css';
 
 const App = () => {
   const [flowers, setFlowers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState();
+
+  const handleError = response => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response.json();
+  }
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/flowers/')
-      .then(res => res.json())
+      fetch('http://127.0.0.1:8000/api/flowers/', {
+        method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Token ${token}`
+          },
+      })
+      .then(handleError)
       .then(result => {
         setFlowers(result);
-        setIsLoading(false);
+      },
+      (error) => {
+        console.log(error);
       });
-  }, [isLoading])
+  }, [token])
 
   return (
-    <body class="is-preload">
+    <div className="is-preload">
       <div id="wrapper">
         <div id="main">
-          <div class="inner">
+          <div className="inner">
             <Router>
-            <Header />
+            <Header loggedIn={loggedIn} setToken={setToken}/>
               <Switch>
-              <Route exact path="/">
-                  <HomePage flowers={flowers}/>
+                
+                <Route exact path="/">
+                  <HomePage flowers={flowers} token={token}/>
                 </Route>
                 
                 <Route path="/flower/:id">
-                  <DetailPage />
+                  <DetailPage token={token}/>
                 </Route>
                 
                 <Route path="/login/">
-                  <LoginPage />
+                  <LoginPage 
+                    setToken={setToken}
+                    setLoggedIn={setLoggedIn}
+                    loggedIn={loggedIn}/>
                 </Route>
 
               </Switch>
@@ -54,7 +74,7 @@ const App = () => {
       <script src="{% static 'js/breakpoints.min.js' %}"></script>
       <script src="{% static 'js/util.js' %}"></script>
       <script src="{% static 'js/main.js' %}"></script>
-    </body>
+    </div>
   );
 }
 

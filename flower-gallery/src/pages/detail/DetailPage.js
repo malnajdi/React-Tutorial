@@ -3,17 +3,23 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 
 const DetailPage = (props) => {
-    const [ t, i18n ] = useTranslation();
+    const [ i18n ] = useTranslation();
     const { id } = useParams();
     const [ flower, setFlower ] = useState({})
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/flowers/${id}`)
+        fetch(`http://127.0.0.1:8000/api/flowers/${id}/`, {
+        method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${props.token}`
+            },
+        })
         .then(res => res.json())
         .then(result => {
             setFlower(result);
         });
-    }, []);
+    }, [id, props.token]);
 
     return (
         <section>

@@ -21,11 +21,11 @@ const HomePage = (props) => {
                 <div className="posts">
                     {flowers.map(flower => 
                         <article>
-                            <Link to={`/flower/${flower.id}`} class="image"><img src={`http://127.0.0.1:8000${flower.image}`} alt="" /></Link>
+                            <Link to={`/flower/${flower.id}`} className="image"><img src={`http://127.0.0.1:8000${flower.image}`} alt="" /></Link>
                             <h3>{flower.title}</h3>
                             <p>{flower.description}</p>
-                            <ul class="actions">
-                                <li><Link to={`/flower/${flower.id}`} class="button">
+                            <ul className="actions">
+                                <li><Link to={`/flower/${flower.id}`} className="button">
                                     {t("more")}
                                 </Link></li>
                             </ul>
